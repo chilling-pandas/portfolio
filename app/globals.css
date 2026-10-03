@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THEME — edit these values to restyle the whole site (space-separated RGB). */
+:root {
+  --bg: 9 10 11;
+  --panel: 17 20 19;
+  --line: 36 44 41;
+  --text: 232 236 234;
+  --muted: 130 142 136;
+  --accent: 16 185 129;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+html { color-scheme: dark; }
+body { background: rgb(var(--bg)); color: rgb(var(--text)); font-family: var(--font-sans); }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* Skills ticker (right to left, like a market board) */
+.ticker {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 45s linear infinite;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* If the visitor prefers reduced motion: no scrolling, just a wrapped list */
+@media (prefers-reduced-motion: reduce) {
+  .ticker { -webkit-mask-image: none; mask-image: none; }
+  .ticker-track { width: auto; flex-wrap: wrap; }
+  .ticker-dup, .ticker-rep { display: none; }
+}
+
+/* 3D tilt cards */
+.tilt {
+  position: relative;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.2s ease-out, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.tilt:hover {
+  will-change: transform;
+  border-color: rgb(var(--accent) / 0.5);
+  box-shadow: 0 12px 32px -14px rgb(var(--accent) / 0.4);
+}
+.tilt-glare {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity 0.25s ease;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--accent) / 0.16), transparent 60%);
+}
+.tilt:hover .tilt-glare { opacity: 1; }
+
+/* Headline accent: slow green → cyan → blue shimmer */
+.gradient-text {
+  background: linear-gradient(90deg, rgb(var(--accent)), #22d3ee, #60a5fa, rgb(var(--accent)));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+@keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* Waving hand */
+.wave { display: inline-block; transform-origin: 70% 70%; animation: wave 2.6s ease-in-out infinite; }
+@keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10%, 30% { transform: rotate(14deg); } 20%, 40% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
+
+/* Headline accent: cycles green → matte green → yellow → matte yellow → teal */
+.color-cycle {
+  color: rgb(var(--accent));
+  animation: color-cycle 5s ease-in-out infinite;
+}
+@keyframes color-cycle {
+  0%, 100% { color: #10b981; } /* green */
+  20% { color: #32c87b; }       /* matte green */
+  40% { color: #edc00b; } 
+  20% { color: #44936a; }     /* yellow */
+  60% { color: #7e2d28; } 
+  20% { color: #a1782f; }     /* matte yellow */
+  80% { color: #0b9f8b; }      /* teal */
+}
