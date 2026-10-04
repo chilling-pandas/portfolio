@@ -3,6 +3,7 @@ import TechStack from "@/components/TechStack";
 import ContactForm from "@/components/ContactForm";
 import NetworkBackground from "@/components/NetworkBackground";
 import HiTyping from "@/components/HiTyping";
+import ResumeButton from "@/components/ResumeButton";
 
 function Label({ children }: { children: React.ReactNode }) {
   return <p className="font-mono text-xs uppercase tracking-widest text-accent">{children}</p>;
@@ -32,10 +33,8 @@ export default function Overview() {
               Get in touch
             </a>
             {site.resumeUrl && (
-            <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-line px-5 py-3 text-sm font-semibold text-muted hover:text-text">
-              Resume
-            </a>
-          )}
+              <ResumeButton className="rounded-lg border border-line px-5 py-3 text-sm font-semibold text-muted hover:text-text" />
+            )}
           </div>
         </div>
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/data/site";
+import ResumeButton from "@/components/ResumeButton";
+import ResumeDrawer from "@/components/ResumeDrawer";
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   const path = usePathname();
@@ -38,10 +40,7 @@ function TopLinks() {
         </a>
       ))}
       {site.resumeUrl && (
-        <a href={site.resumeUrl} target="_blank" rel="noopener noreferrer"
-          className="ml-2 rounded-lg bg-accent px-4 py-1.5 text-sm font-semibold text-bg hover:opacity-90">
-          Resume
-        </a>
+        <ResumeButton className="ml-2 rounded-lg bg-accent px-4 py-1.5 text-sm font-semibold text-bg hover:opacity-90" />
       )}
     </div>
   );
@@ -79,6 +78,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         </div>
         <main className="mx-auto w-full min-w-0 max-w-6xl px-4 py-10 sm:px-8 lg:py-8">{children}</main>
       </div>
+      <ResumeDrawer />
     </div>
   );
 }
