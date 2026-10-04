@@ -26,7 +26,7 @@ export const site = {
   links: [
     { label: "GitHub", href: "https://github.com/chilling-pandas" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/sourav-manna-100590279" },
-    { label: "LeetCode", href: "https://leetcode.com/u/98_Sourav/" },
+    // { label: "LeetCode", href: "https://leetcode.com/u/98_Sourav/" },
   ],
   // Contact mode: "links" now; switch to "form" later when we decide.
   contactMode: "links" as "links" | "form",
