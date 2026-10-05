@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 
+export const dynamic = "force-static";
+
 // Pages Google should know about. Add a path here when you add a new page.
 const routes = ["", "/projects", "/experience", "/certificates", "/skills", "/education"];
 
