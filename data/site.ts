@@ -1,7 +1,7 @@
 // SITE SETTINGS — edit freely. Everything on the site reads from /data.
 export const site = {
   siteUrl: "https://portfolio-sourav-manna.vercel.app",
-  googleVerification: "", // paste the Google code here in step 3
+  googleVerification: "hdRrH0FKAW7e8NyFPNtJUJTu6Hnu0dzoWq_7AZU7NhE", // paste the Google code here in step 3
     about: [
     "I'm a B.Tech Computer Science student (2022–2026) at The Neotia University, focused on Python backend development and machine learning.",
     "I've worked on Django REST APIs during an internship and on ML projects covering logistics prediction and retrieval-augmented generation (RAG). I'm looking for fresher and intern roles where I can keep building real systems.",
