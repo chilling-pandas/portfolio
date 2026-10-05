@@ -4,6 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import NetworkBackground from "@/components/NetworkBackground";
 import HiTyping from "@/components/HiTyping";
 import ResumeButton from "@/components/ResumeButton";
+import FeaturedProject from "@/components/FeaturedProject";
 
 function Label({ children }: { children: React.ReactNode }) {
   return <p className="font-mono text-xs uppercase tracking-widest text-accent">{children}</p>;
@@ -71,7 +72,7 @@ export default function Overview() {
       {/* About */}
       <section id="about" className="scroll-mt-20">
         <Label>About me</Label>
-        <h2 className="mt-2 text-3xl font-bold tracking-tight">Who I am</h2>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight">Who I am?</h2>
         <div className="mt-6 flex max-w-prose flex-col gap-4 text-muted">
           {site.about.map((p, i) => <p key={i}>{p}</p>)}
         </div>
@@ -83,7 +84,14 @@ export default function Overview() {
         <h2 className="mt-2 mb-6 text-3xl font-bold tracking-tight">What I work with</h2>
         <TechStack />
       </section>
-
+      {/* Project demo */}
+  
+      <section id="demo" className="scroll-mt-20">
+        <Label>Project demo</Label>
+        <h2 className="mt-2 mb-6 text-3xl font-bold tracking-tight">See it in action</h2>
+        <FeaturedProject />
+      </section>
+      
       {/* Contact */}
       <section id="contact" className="scroll-mt-20">
         <Label>Get in touch</Label>
